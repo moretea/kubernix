@@ -33,3 +33,6 @@ I'll nixify all of this some day. For now you'll have to run the following steps
   ```
 - Use the [cri-tools](https://github.com/kubernetes-incubator/cri-tools) that are made available in the nix-shell to play with kubernix.
 - Alternatively, run one of the tests in the [tests](./tests) directory.
+
+## Demo
+Nope, it doesn't work yet!
