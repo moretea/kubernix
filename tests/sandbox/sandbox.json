@@ -1,0 +1,14 @@
+{
+    "metadata": {
+        "name": "nginx-sandbox",
+        "namespace": "default",
+        "attempt": 1,
+        "uid": "hdishd83djaidwnduwk28bcsb"
+    },
+    "labels": {
+      "app": "nginx",
+      "type": "web"
+    },
+    "linux": {
+    }
+}
