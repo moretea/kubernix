@@ -2,7 +2,7 @@
 
 # Kubernix
 
-Container Runtime Interface (CRI) implementation that allows you to orchestrate native nixos containers with Kubernetes. No Docker container required anymore.
+Kubernix is a [Container Runtime Interface (CRI)](http://blog.kubernetes.io/2016/12/container-runtime-interface-cri-in-kubernetes.html) implementation that allows you to orchestrate native [NixOS containers](http://nixos.org/nixos/manual/#ch-containers) with Kubernetes, without depending on any other containerizer technology.
 
 *_warning_*: It's just a proof of concept for now! Don't use it for anything serious
 
