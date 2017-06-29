@@ -1,12 +1,14 @@
 set -euo pipefail
 
 KUBERNIX_DIR=$(cd $(dirname "${BASH_SOURCE[0]}")/.. && pwd)
-KUBERNIX_BIN=$KUBERNIX_DIR/cmd/kubernix/kubernix
+KUBERNIX_BIN=${KUBERNIX_BIN:-$KUBERNIX_DIR/kubernix}
 
 kubernix::test::ensure_bin() {
   if [ ! -f $KUBERNIX_BIN ]; then
-    echo "building kubernix"
-    (cd $(dirname $KUBERNIX_BIN); go build)
+    echo "kubernix is not build yet!"
+    echo "build it with:"
+    echo "  go build github.com/moretea/kubernix/cmd/kubernix"
+    exit 1
   fi
 }
 

@@ -7,32 +7,34 @@ Kubernix is a [Container Runtime Interface (CRI)](http://blog.kubernetes.io/2016
 *_warning_*: It's just a proof of concept for now! Don't use it for anything serious
 
 ## Development
-I'll nixify all of this some day. For now you'll have to run the following steps:
 
-- Setup Go source code
+### Preparation
+1. Because we use `buildGoPackage' nix-shell magic, there is no need to create a `$GOPATH/src/github.com/moretea` directory.
+2. Clone the repository
   ```
-  export GOPATH="SOMEDIR"
-  mkdir -p $GOPATH/src/github.com/moretea/
-  cd $GOPATH/src/github.com/moretea/
-  git clone git@github.com:moretea/kubernix.git
-  cd kubernix
+    git clone git@github.com:moretea/kubernix.git
   ```
-- Enter a nix-shell (or use direnv)
-- Install godep (note: `nix-env -i godep` is _not_ the same package)
-  This should probably be packaged in nixpkgs.
+3. Enter a nix-shell.
+4. Get the dependencies by running
   ```
-    go get -u github.com/golang/dep/cmd/dep 
+    dep ensure
   ```
-- Install dependencies
-  `$GOPATH/bin/dep ensure`
-- Building of kubernix
-  ```
-    cd cmd/kubernix
-    go build
-    rm -f kubernix.sock; ./kubernix -socket ./kubernix.sock
-  ```
+### Building
+```
+  go build githbub.com/moretea/kubernix
+```
+
+### Playing around
+```
+  rm -f kubernix.sock; ./kubernix -socket ./kubernix.sock
+```
+
 - Use the [cri-tools](https://github.com/kubernetes-incubator/cri-tools) that are made available in the nix-shell to play with kubernix.
-- Alternatively, run one of the tests in the [tests](./tests) directory.
+- Alternatively, run one (or all) of the tests in the [tests](./tests) directory.
+
+
+## Release
+- Doesn't work yet, need to have a godep2nix tool.
 
 ## Demo
 Nope, it doesn't work yet!
