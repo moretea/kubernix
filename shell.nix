@@ -37,6 +37,8 @@ in stdenv.mkDerivation rec {
   goPackagePath = "github.com/moretea/kubernix";
   buildInputs = [ go crictl jq dep ];
 
+  CRI_RUNTIME_ENDPOINT = "/tmp/kubernix.sock";
+
   shellHook = ''
     projectGoPath=$(mktemp -d)
     mkdir -p $projectGoPath/src/$(dirname ${goPackagePath})
