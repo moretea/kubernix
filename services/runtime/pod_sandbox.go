@@ -12,7 +12,9 @@ import (
 
 // RunPodSandbox creates and starts a pod-level sandbox. Runtimes must ensure
 // the sandbox is in the ready state on success.
-func (s Server) RunPodSandbox(ctx context.Context, rq *cri.RunPodSandboxRequest) (*cri.RunPodSandboxResponse, error) {
+func (s *Server) RunPodSandbox(ctx context.Context, rq *cri.RunPodSandboxRequest) (*cri.RunPodSandboxResponse, error) {
+	log.Debugf("RunPodSandboxRequest %+v", rq)
+
 	s.lock.Lock()
 	defer s.lock.Unlock()
 
@@ -29,8 +31,8 @@ func (s Server) RunPodSandbox(ctx context.Context, rq *cri.RunPodSandboxRequest)
 	sb, err := runtime.NewSandbox(sandboxName, sandboxUid)
 
 	if err != nil {
-		logger.Errorf("Could not create sandbox", err)
-		return nil, fmt.Errorf("Could not create sandbox", err)
+		logger.Errorf("Could not create sandbox: %v", err)
+		return nil, fmt.Errorf("Could not create sandbox: %v", err)
 	}
 	sb.Labels = rq.Config.Labels
 	sb.Config.Metadata = rq.Config.Metadata
@@ -54,7 +56,8 @@ func (s Server) RunPodSandbox(ctx context.Context, rq *cri.RunPodSandboxRequest)
 // at least once before calling RemovePodSandbox. It will also attempt to
 // reclaim resources eagerly, as soon as a sandbox is not needed. Hence,
 // multiple StopPodSandbox calls are expected.
-func (s Server) StopPodSandbox(ctx context.Context, rq *cri.StopPodSandboxRequest) (*cri.StopPodSandboxResponse, error) {
+func (s *Server) StopPodSandbox(ctx context.Context, rq *cri.StopPodSandboxRequest) (*cri.StopPodSandboxResponse, error) {
+	log.Debugf("StopPodSandboxRequest %+v", rq)
 	return nil, fmt.Errorf("not implemented")
 }
 
@@ -62,22 +65,24 @@ func (s Server) StopPodSandbox(ctx context.Context, rq *cri.StopPodSandboxReques
 // in the sandbox, they must be forcibly terminated and removed.
 // This call is idempotent, and must not return an error if the sandbox has
 // already been removed.
-func (s Server) RemovePodSandbox(ctx context.Context, rq *cri.RemovePodSandboxRequest) (*cri.RemovePodSandboxResponse, error) {
+func (s *Server) RemovePodSandbox(ctx context.Context, rq *cri.RemovePodSandboxRequest) (*cri.RemovePodSandboxResponse, error) {
+	log.Debugf("RemovePodSandboxRequest %+v", rq)
 	return nil, fmt.Errorf("not implemented")
 }
 
 // PodSandboxStatus returns the status of the PodSandbox. If the PodSandbox is not
 // present, returns an error.
-func (s Server) PodSandboxStatus(ctx context.Context, rq *cri.PodSandboxStatusRequest) (*cri.PodSandboxStatusResponse, error) {
+func (s *Server) PodSandboxStatus(ctx context.Context, rq *cri.PodSandboxStatusRequest) (*cri.PodSandboxStatusResponse, error) {
+	log.Debugf("PodSandboxStatusRequest %+v", rq)
 	return nil, fmt.Errorf("not implemented")
 }
 
 // ListPodSandbox returns a list of PodSandboxes.
-func (s Server) ListPodSandbox(ctx context.Context, rq *cri.ListPodSandboxRequest) (*cri.ListPodSandboxResponse, error) {
+func (s *Server) ListPodSandbox(ctx context.Context, rq *cri.ListPodSandboxRequest) (*cri.ListPodSandboxResponse, error) {
+	log.Debugf("ListPodSandboxRequest %+v", rq)
+
 	s.lock.Lock()
 	defer s.lock.Unlock()
-
-	log.Debugf("ListPodSandboxRequest %+v", rq)
 
 	var potentialSandboxes []*runtime.Sandbox
 
