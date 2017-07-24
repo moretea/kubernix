@@ -21,7 +21,7 @@ Kubernix is a [Container Runtime Interface (CRI)](http://blog.kubernetes.io/2016
   ```
 ### Building
 ```
-  go build githbub.com/moretea/kubernix
+  go build githbub.com/moretea/kubernix/cmd/kubernix
 ```
 
 ### Playing around
