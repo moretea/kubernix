@@ -40,14 +40,14 @@ func main() {
 
 	grpcServer := grpc.NewServer()
 
-	kubernix_service, err := server.New()
+	kubernix_server, err := server.New()
 
 	if err != nil {
 		log.Fatalf("Could not create kubernix server")
 	}
 
-	cri.RegisterRuntimeServiceServer(grpcServer, kubernix_service)
-	//  cri.RegisterImageServiceServer(grpcServer, kubernix_service)
+	cri.RegisterRuntimeServiceServer(grpcServer, kubernix_server)
+	cri.RegisterImageServiceServer(grpcServer, kubernix_server)
 
 	log.Infof("Listening on %s", socketPath)
 	unix_socket, err := net.Listen("unix", socketPath)
