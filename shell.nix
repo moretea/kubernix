@@ -30,5 +30,6 @@ in stdenv.mkDerivation rec {
     mkdir -p $projectGoPath/src/$(dirname ${goPackagePath})
     ln -s $(pwd) $projectGoPath/src/${goPackagePath}
     export GOPATH=$projectGoPath:$GOPATH
+    alias build='go build github.com/moretea/kubernix/cmd/kubernix'
   '';
 }
