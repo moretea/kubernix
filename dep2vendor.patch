@@ -1,0 +1,15 @@
+--- a/cmd/dep/ensure.go	2017-09-07 22:17:44.905329236 +0200
++++ b/cmd/dep/ensure.go	2017-09-07 22:20:06.338656306 +0200
+@@ -166,11 +166,7 @@
+ 	if err != nil {
+ 		return errors.Wrap(err, "ensure ListPackage for project")
+ 	}
+-
+-	if err := checkErrors(params.RootPackageTree.Packages); err != nil {
+-		return err
+-	}
+-
++ 
+ 	if cmd.add {
+ 		return cmd.runAdd(ctx, args, p, sm, params)
+ 	} else if cmd.update {

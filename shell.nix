@@ -1,5 +1,6 @@
 { pkgs ? (import <nixpkgs> {}) }:
 with pkgs;
+with (import ./dep.nix { inherit pkgs; });
 let
   crictl = buildGoPackage {
     name = "crictl";
@@ -16,22 +17,7 @@ let
     deps = null;
   };
 
-  dep = buildGoPackage rec {
-    name = "dep-unstable-${version}";
-    version = "2017-06-27";
-    rev = "4bfa359b53746db53fcf09fc06044689c55e3949";
 
-    src = fetchFromGitHub {
-      owner = "golang";
-      repo = "dep";
-      inherit rev;
-      sha256 = "1brsz4kw6gg8cy49641g8ky27s35xwa05vn1blnkhkl1973xwpir";
-    };
-
-    goPackagePath = "github.com/golang/dep";
-    subPackages = [ "cmd/dep" ];
-    goDeps = null;
-  };
 in stdenv.mkDerivation rec {
   name = "kubernix-dev";
   goPackagePath = "github.com/moretea/kubernix";
