@@ -2,17 +2,18 @@
 with pkgs;
 with (import ./dep.nix { inherit pkgs; });
 let
-  crictl = buildGoPackage {
+  crictl = buildGoPackage rec {
     name = "crictl";
+    version = "1.17.0";
 
     src = fetchFromGitHub {
-      owner = "kubernetes-incubator";
+      owner = "kubernetes-sigs";
       repo = "cri-tools";
-      rev = "e03736e429bcd0dba6f46cf6d6f7ccf0f5c70cc3";
-      sha256= "00zy269k3y3q664gm6lxvr8v2ky8zdgkbxi9banx08irwxcrg22p";
+      rev = "v${version}";
+      sha256= "0h9gry56graif761lmcy91q9fzwvmwb15wcx8245927yfg5j0zgh";
     };
 
-    goPackagePath = "github.com/kubernetes-incubator/cri-tools";
+    goPackagePath = "github.com/kubernetes-sigs/cri-tools";
     subPackages = ["cmd/crictl"];
     deps = null;
   };

@@ -5,7 +5,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 	context "golang.org/x/net/context"
-	cri "k8s.io/kubernetes/pkg/kubelet/apis/cri/v1alpha1/runtime"
+	cri "k8s.io/cri-api/pkg/apis/runtime/v1alpha2"
 )
 
 // ListImages lists existing images.

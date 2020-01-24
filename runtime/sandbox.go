@@ -1,7 +1,7 @@
 package runtime
 
 import (
-	cri "k8s.io/kubernetes/pkg/kubelet/apis/cri/v1alpha1/runtime"
+	cri "k8s.io/cri-api/pkg/apis/runtime/v1alpha2"
 )
 
 type Container struct {
