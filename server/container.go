@@ -43,6 +43,11 @@ func (s *Server) ContainerStatus(ctx context.Context, rq *cri.ContainerStatusReq
 	return nil, fmt.Errorf("not implemented")
 }
 
+// UpdateContainerResources updates the cgroup resources for the container.
+func (s *Server) UpdateContainerResources(ctx context.Context, rq *cri.UpdateContainerResourcesRequest) (*cri.UpdateContainerResourcesResponse, error) {
+	return nil, fmt.Errorf("not implemented")
+}
+
 // ExecSync runs a command in a container synchronously.
 func (s *Server) ExecSync(ctx context.Context, rq *cri.ExecSyncRequest) (*cri.ExecSyncResponse, error) {
 	return nil, fmt.Errorf("not implemented")
@@ -71,5 +76,12 @@ func (s *Server) ContainerStats(ctx context.Context, rq *cri.ContainerStatsReque
 
 // ListContainerStats returns stats of all running containers.
 func (s *Server) ListContainerStats(ctx context.Context, rq *cri.ListContainerStatsRequest) (*cri.ListContainerStatsResponse, error) {
+	return nil, fmt.Errorf("not implemented")
+}
+
+// ReopenContainerLog asks runtime to reopen the stdout/stderr log file
+// for the container. If it returns error, new container log file MUST NOT
+// be created.
+func (s *Server) ReopenContainerLog(ctx context.Context, rq *cri.ReopenContainerLogRequest) (*cri.ReopenContainerLogResponse, error) {
 	return nil, fmt.Errorf("not implemented")
 }
