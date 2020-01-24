@@ -4,13 +4,13 @@ with pkgs;
 rec {
   dep = buildGoPackage rec {
     name = "dep-unstable-${version}";
-    version = "0.3.0";
+    version = "0.5.4";
 
     src = fetchFromGitHub {
       owner = "golang";
       repo = "dep";
       rev = "v${version}";
-      sha256 = "1mkyc2z2zidh5h4vwwwc71cbyyi48c0n8gh2imjxbyy0g5i1vbgm";
+      sha256 = "02akzbjar1v01rdal746vk6mklff29yk2mqfyjk1zrs0mlg38ygd";
     };
 
     goPackagePath = "github.com/golang/dep";
